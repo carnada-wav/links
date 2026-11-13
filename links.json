@@ -61,5 +61,26 @@
         "body": "Hi,\n\nI'd like to request a booking for Carnada.\n\nEvent / festival:\nDate:\nCity / country:\nVenue & capacity:\nSet length:\nBudget / offer:\n\nThanks!"
       }
     ]
+  },
+  "background": {
+    "interval": 7,
+    "items": [
+      {
+        "src": "bg/01.webp",
+        "pos": "48% 38%"
+      },
+      {
+        "src": "bg/02.webp",
+        "pos": "47% 38%"
+      },
+      {
+        "src": "bg/03.webp",
+        "pos": "45% 55%"
+      },
+      {
+        "src": "bg/04.webp",
+        "pos": "51% 52%"
+      }
+    ]
   }
 }
