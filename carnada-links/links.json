@@ -1,0 +1,86 @@
+{
+  "name": "CARNADA",
+  "tagline": "Hard Trance · Hard Bounce",
+  "socials": [
+    {
+      "label": "SoundCloud",
+      "url": "https://soundcloud.com/carnadawavs"
+    },
+    {
+      "label": "Spotify",
+      "url": "https://open.spotify.com/artist/6j9EhlvFmGJmO3PDt2M8bp"
+    },
+    {
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/@carnada.wa"
+    }
+  ],
+  "spotify": {
+    "follow": "https://open.spotify.com/artist/6j9EhlvFmGJmO3PDt2M8bp",
+    "items": [
+      {
+        "label": "Top tracks",
+        "uri": "artist/6j9EhlvFmGJmO3PDt2M8bp"
+      },
+      {
+        "label": "Radical Shift",
+        "uri": "track/7gGLRdGxmzUlap6aJCstyZ",
+        "links": [
+          {
+            "label": "Apple Music",
+            "url": "https://music.apple.com/us/album/radical-shift/1848161513?i=1848161516"
+          }
+        ]
+      },
+      {
+        "label": "Bumming arround",
+        "uri": "track/5VoR5x08bV0VsUjH9sxKMd"
+      }
+    ]
+  },
+  "sets": [
+    {
+      "title": "DJ SISU F2F CARNADA | FACE 2 FACE: BARCELONA",
+      "youtube": "P-FnSduDah4",
+      "thumb": "https://i.ytimg.com/vi/P-FnSduDah4/maxresdefault.jpg"
+    }
+  ],
+  "booking": {
+    "label": "Booking",
+    "options": [
+      {
+        "label": "Spain",
+        "note": "Booking form",
+        "url": "https://app.youform.com/forms/tvobohaq"
+      },
+      {
+        "label": "World",
+        "note": "bookings@rextheagency.com",
+        "email": "bookings@rextheagency.com",
+        "subject": "Booking request — Carnada",
+        "body": "Hi,\n\nI'd like to request a booking for Carnada.\n\nEvent / festival:\nDate:\nCity / country:\nVenue & capacity:\nSet length:\nBudget / offer:\n\nThanks!"
+      }
+    ]
+  },
+  "background": {
+    "interval": 7,
+    "items": [
+      {
+        "src": "bg/01.webp",
+        "pos": "48% 38%"
+      },
+      {
+        "src": "bg/02.webp",
+        "pos": "47% 38%"
+      },
+      {
+        "src": "bg/03.webp",
+        "pos": "45% 55%"
+      },
+      {
+        "src": "bg/04.webp",
+        "pos": "51% 52%"
+      }
+    ]
+  }
+}
