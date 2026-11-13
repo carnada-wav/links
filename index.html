@@ -49,10 +49,11 @@ h2{margin:0 0 12px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
 .player.off{padding:18px}
 .player.off p{margin:0 0 12px;color:var(--muted);font-size:13px}
 .player iframe{display:block;width:100%;height:352px;border:0;border-radius:16px;background:transparent}
-.rel{padding:14px;display:flex;gap:14px;align-items:center}
-.rel img{width:84px;height:84px;flex:none;border-radius:14px;object-fit:cover;background:#0b1206;border:1px solid var(--glass-b)}
-.rel h3{margin:0;font-size:17px;line-height:1.25}
-.rel .by{margin:0 0 10px;color:var(--muted);font-size:13px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:2px 4px 10px}
+.tab{font:inherit;font-size:13px;color:var(--text);background:var(--glass);border:1px solid var(--glass-b);border-radius:999px;padding:6px 14px;cursor:pointer;transition:background .15s,color .15s}
+.tab:hover{border-color:var(--lime)}
+.tab[aria-pressed="true"]{background:var(--lime);color:#0b1000;border-color:var(--lime);font-weight:700}
+.tab:focus-visible{outline:2px solid var(--text);outline-offset:2px}
 .row{display:flex;flex-wrap:wrap;gap:8px}
 .vid{padding:12px}
 .vid h3{margin:10px 4px 4px;font-size:14px;line-height:1.35}
@@ -79,8 +80,8 @@ footer p{margin:0 0 6px}
 #cookie p{margin:0 0 12px;font-size:13px}
 #cookie .row{justify-content:flex-end}
 footer b{color:var(--lime-dim)}
-@media (max-width:420px){.rel{flex-direction:column;text-align:center}.rel .row{justify-content:center}.book-opts{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){.tagline,.socials,main,footer{opacity:1;animation:none}pre.logo.on{animation:none}.facade img,.pill,.btn,.more,.opt{transition:none}}
+@media (max-width:420px){.book-opts{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.tagline,.socials,main,footer{opacity:1;animation:none}pre.logo.on{animation:none}.facade img,.pill,.btn,.more,.opt,.tab{transition:none}}
 </style>
 </head>
 <body>
@@ -166,41 +167,47 @@ ok.addEventListener('click',function(){decide('yes')});
 row.appendChild(no);row.appendChild(ok);c.appendChild(row);document.body.appendChild(c);
 }
 
-function spotifyPlayer(id){
+function spotifyPlayer(sp){
+var wrap=el('div','stack');
 var box=el('div','glass player');box.tabIndex=-1;
+var acts=el('div','row');
+var cur=0;
+function src(i){return 'https://open.spotify.com/embed/'+sp.items[i].uri+'?utm_source=generator&theme=0'}
+function drawActs(){
+acts.textContent='';
+if(sp.follow)acts.appendChild(link('btn','Follow on Spotify',sp.follow));
+(sp.items[cur].links||[]).forEach(function(l){acts.appendChild(link('btn ghost',l.label,l.url))});
+}
 function draw(){
 box.textContent='';
 if(consent==='yes'){
 box.className='glass player';
+var tabs=el('div','tabs');tabs.setAttribute('role','group');tabs.setAttribute('aria-label','Choose what to play');
 var f=document.createElement('iframe');
-f.src='https://open.spotify.com/embed/artist/'+encodeURIComponent(id)+'?utm_source=generator&theme=0';
-f.height='352';f.title='Spotify player: Carnada';f.loading='lazy';
+f.src=src(cur);f.height='352';f.title='Spotify player: Carnada';f.loading='lazy';
 f.allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
-box.appendChild(f);
+sp.items.forEach(function(it,i){
+var b=el('button','tab',it.label);b.type='button';b.setAttribute('aria-pressed',i===cur?'true':'false');
+b.addEventListener('click',function(){
+cur=i;
+Array.prototype.forEach.call(tabs.children,function(t,j){t.setAttribute('aria-pressed',j===i?'true':'false')});
+f.src=src(i);drawActs();
+});
+tabs.appendChild(b);
+});
+box.appendChild(tabs);box.appendChild(f);
 }else{
 box.className='glass player off';
 box.appendChild(el('p',null,consent==='no'?'Spotify player is off because you rejected cookies.':'Accept cookies to show the Spotify player here.'));
 var row=el('div','row');
-var b=el('button','btn small','Show player');b.type='button';
-b.addEventListener('click',function(){decide('yes')});
-row.appendChild(b);
-row.appendChild(link('btn small ghost','Open in Spotify','https://open.spotify.com/artist/'+encodeURIComponent(id)));
+var b2=el('button','btn small','Show player');b2.type='button';
+b2.addEventListener('click',function(){decide('yes')});
+row.appendChild(b2);
 box.appendChild(row);
 }
 }
-renderers.push(draw);draw();return box;
-}
-
-function release(r){
-var c=el('article','glass rel');
-var im=el('img');im.src=r.cover;im.alt='Cover: '+r.title;im.width=84;im.height=84;im.loading='lazy';
-var d=el('div');
-d.appendChild(el('h3',null,r.title));
-d.appendChild(el('p','by',r.artist));
-var row=el('div','row');
-(r.links||[]).forEach(function(l){row.appendChild(link('btn small ghost',l.label,l.url))});
-d.appendChild(row);
-c.appendChild(im);c.appendChild(d);return c;
+renderers.push(draw);draw();drawActs();
+wrap.appendChild(box);wrap.appendChild(acts);return wrap;
 }
 
 function booking(b){
@@ -257,11 +264,9 @@ var so=document.getElementById('socials');
 var m=document.getElementById('main');
 if(d.booking&&d.booking.options)m.appendChild(booking(d.booking));
 
-if(d.spotifyArtist||(d.releases&&d.releases.length)){
-var s1=section('Music','h-music'),st=el('div','stack');
-if(d.spotifyArtist)st.appendChild(spotifyPlayer(d.spotifyArtist));
-(d.releases||[]).forEach(function(r){st.appendChild(release(r))});
-s1.appendChild(st);m.appendChild(s1);
+if(d.spotify&&d.spotify.items&&d.spotify.items.length){
+var s1=section('Music','h-music');
+s1.appendChild(spotifyPlayer(d.spotify));m.appendChild(s1);
 }
 if(d.sets&&d.sets.length){
 var s2=section('Latest sets','h-sets'),st2=el('div','stack');
