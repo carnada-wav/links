@@ -130,7 +130,6 @@ footer .copy{margin-top:18px;letter-spacing:.24em;text-transform:uppercase}
 .linkbtn:hover{color:var(--text)}
 }
 @media (max-width:420px){.book-opts{grid-template-columns:1fr}}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -173,7 +172,7 @@ var LOGO=[
 ];
 var lg=document.getElementById('logo'),FULL=LOGO.join('\n');
 lg.textContent=FULL;
-var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var reduce=false;
 if(reduce){lg.classList.add('on')}
 else{
 lg.style.width=lg.offsetWidth+'px';
