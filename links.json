@@ -15,35 +15,29 @@
       "url": "https://www.tiktok.com/@carnada.wa"
     }
   ],
-  "spotifyArtist": "6j9EhlvFmGJmO3PDt2M8bp",
-  "releases": [
-    {
-      "title": "Radical Shift",
-      "artist": "Carnada",
-      "cover": "https://i.scdn.co/image/ab67616d0000b273becd93b7b98b14a703f5e9ac",
-      "links": [
-        {
-          "label": "Spotify",
-          "url": "https://open.spotify.com/track/7gGLRdGxmzUlap6aJCstyZ"
-        },
-        {
-          "label": "Apple Music",
-          "url": "https://music.apple.com/us/album/radical-shift/1848161513?i=1848161516"
-        }
-      ]
-    },
-    {
-      "title": "Bumming arround",
-      "artist": "RAVEOUT500, Carnada",
-      "cover": "https://i.scdn.co/image/ab67616d0000b273f8c34a61d473b493d74e286f",
-      "links": [
-        {
-          "label": "Spotify",
-          "url": "https://open.spotify.com/track/5VoR5x08bV0VsUjH9sxKMd"
-        }
-      ]
-    }
-  ],
+  "spotify": {
+    "follow": "https://open.spotify.com/artist/6j9EhlvFmGJmO3PDt2M8bp",
+    "items": [
+      {
+        "label": "Top tracks",
+        "uri": "artist/6j9EhlvFmGJmO3PDt2M8bp"
+      },
+      {
+        "label": "Radical Shift",
+        "uri": "track/7gGLRdGxmzUlap6aJCstyZ",
+        "links": [
+          {
+            "label": "Apple Music",
+            "url": "https://music.apple.com/us/album/radical-shift/1848161513?i=1848161516"
+          }
+        ]
+      },
+      {
+        "label": "Bumming arround",
+        "uri": "track/5VoR5x08bV0VsUjH9sxKMd"
+      }
+    ]
+  },
   "sets": [
     {
       "title": "DJ SISU F2F CARNADA | FACE 2 FACE: BARCELONA",
