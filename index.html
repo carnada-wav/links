@@ -15,6 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://carnada-wav.github.io/links/og.png">
 <meta name="theme-color" content="#050605">
+<link rel="preload" href="bg/01.webp" as="image" type="image/webp">
 <link rel="stylesheet" href="fonts.css">
 <style>
 :root{--grad:linear-gradient(125deg,rgba(192,255,0,.42) 0%,rgba(192,255,0,.14) 55%,rgba(192,255,0,.02) 100%);--grad-hi:linear-gradient(125deg,rgba(192,255,0,.6) 0%,rgba(192,255,0,.22) 55%,rgba(192,255,0,.04) 100%);--ring:linear-gradient(125deg,rgba(192,255,0,.95),rgba(192,255,0,.3) 55%,rgba(192,255,0,0));--bg:#050605;--lime:#c0ff00;--ink:#0a0d02;--text:#ecece6;--muted:#8d9086;--line:rgba(255,255,255,.1);--r:20px;--ease:cubic-bezier(.2,.8,.2,1);--sans:"Space Grotesk",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
@@ -65,7 +66,8 @@ h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--li
 .btn::before,.tab-ind::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:var(--ring);pointer-events:none;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
 .btn.ghost{background:transparent;box-shadow:none}
 .btn.ghost::before{background:linear-gradient(125deg,rgba(192,255,0,.6),rgba(255,255,255,.1) 55%,rgba(255,255,255,.05))}
-.btn.small{padding:11px 16px}
+.btn.small{padding:11px 16px;min-height:44px}
+.btn.ghost{min-height:44px}
 .btn.big{display:flex;width:100%;font-size:14px;letter-spacing:.22em;padding:22px 24px;border-radius:var(--r)}
 .btn.big::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.5) 50%,transparent 62%);transform:translateX(-130%);transition:transform .9s var(--ease);pointer-events:none}
 .arr{display:inline-block;transition:transform .45s var(--ease)}
@@ -95,7 +97,7 @@ h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--li
 .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:2px}
 .vid{padding:10px}
 .vid h3{margin:16px 8px 4px;font:600 15px/1.35 var(--sans)}
-.vid a.alt{display:inline-flex;align-items:center;min-height:36px;margin:0 8px 4px;font-size:12px;letter-spacing:.06em;color:var(--muted);text-underline-offset:3px}
+.vid a.alt{display:inline-flex;align-items:center;min-height:44px;margin:0 8px 0;font-size:12px;letter-spacing:.06em;color:var(--muted);text-underline-offset:3px}
 .facade{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;border-radius:14px;overflow:hidden;cursor:pointer;background:#0a0a09}
 .facade img{width:100%;height:100%;object-fit:cover;display:block;opacity:.8;transition:opacity .4s,transform .8s var(--ease)}
 .facade .play{position:absolute;inset:0;margin:auto;width:68px;height:68px;border-radius:50%;background:rgba(10,10,8,.6);border:1px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;transition:background .3s,border-color .3s,transform .5s var(--ease)}
@@ -109,7 +111,7 @@ h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--li
 footer{margin-top:64px;text-align:center;color:var(--muted);font-size:11px;letter-spacing:.08em;animation:up .9s var(--ease) 2s both}
 footer p{margin:0 0 8px}
 footer .copy{margin-top:18px;letter-spacing:.24em;text-transform:uppercase}
-.linkbtn{display:inline-flex;align-items:center;min-height:32px;background:none;border:0;padding:0 4px;font:inherit;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.linkbtn{display:inline-flex;align-items:center;min-height:44px;background:none;border:0;padding:0 4px;font:inherit;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 #cookie{position:fixed;left:12px;right:12px;bottom:12px;max-width:540px;margin:0 auto;padding:18px 20px;z-index:20;background:rgba(10,11,9,.94)}
 #cookie p{margin:0 0 14px;font-size:13px}
 #cookie .row{justify-content:flex-end}
@@ -139,7 +141,7 @@ footer .copy{margin-top:18px;letter-spacing:.24em;text-transform:uppercase}
 <p class="tagline" id="tagline"></p>
 <ul class="socials" id="socials" aria-label="Social profiles"></ul>
 </header>
-<main id="main" aria-live="polite">
+<main id="main">
 <noscript><div class="glass empty">Enable JavaScript to see the links.</div></noscript>
 </main>
 <footer>
@@ -215,7 +217,7 @@ if(document.getElementById('cookie'))return;
 var c=el('div','glass');c.id='cookie';c.setAttribute('role','region');c.setAttribute('aria-label','Cookie preferences');
 c.appendChild(el('p',null,'This page can show Spotify’s player, which uses cookies. Accept to load it. YouTube loads only when you press play.'));
 var row=el('div','row');
-var no=el('button','btn small ghost','Reject');no.type='button';
+var no=el('button','btn small','Reject');no.type='button';
 var ok=el('button','btn small','Accept');ok.type='button';
 no.addEventListener('click',function(){decide('no')});
 ok.addEventListener('click',function(){decide('yes')});
@@ -338,7 +340,7 @@ return c;
 function slideshow(b){
 var host=document.getElementById('bg');
 if(!host||!b||!b.items||!b.items.length)return;
-var items=b.items,ms=(b.interval||7)*1000,n=0,slides=[],timer=null;
+var items=b.items,ms=(b.interval||7)*1000,slides=[];
 host.style.setProperty('--dur',((ms+1800)/1000)+'s');
 function mk(it){var d=el('div','s'),im=new Image();im.alt='';im.decoding='async';im.src=it.src;
 var pos=it.pos||'50% 50%';im.style.objectPosition=pos;d.style.setProperty('--o',pos);d.appendChild(im);return d}
@@ -358,11 +360,10 @@ setTimeout(function(){prev.classList.remove('z')},1900);
 cur=nxt;
 var pre=new Image();pre.src=items[(idx+1)%items.length].src;
 }
-timer=setInterval(next,ms);
-document.addEventListener('visibilitychange',function(){});
+setInterval(next,ms);
 }
 
-fetch('links.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){
+fetch('links.json',{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(d){
 document.title=d.name?d.name.charAt(0)+d.name.slice(1).toLowerCase()+' · Links':document.title;
 document.getElementById('tagline').textContent=d.tagline||'';
 slideshow(d.background);
@@ -390,7 +391,7 @@ st4.appendChild(a);
 });
 s4.appendChild(st4);m.appendChild(s4);
 }
-}).catch(function(){document.getElementById('main').innerHTML='<div class="glass empty">Could not load the links.</div>'});
+}).catch(function(){var m=document.getElementById('main'),e=el('div','glass empty','Could not load the links. Please refresh the page.');e.setAttribute('role','alert');m.appendChild(e)});
 document.getElementById('yr').textContent=new Date().getFullYear();
 if(!reduce&&window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine)').matches){
 var raf=0,mx=0,my=0,tg=null;
