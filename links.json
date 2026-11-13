@@ -1,11 +1,19 @@
 {
   "name": "CARNADA",
   "tagline": "Hard Trance · Hard Bounce",
-  "avatar": "https://cdn.komi.io/cdn-cgi/image/trim.left=0,trim.top=608,trim.width=2432,trim.height=3040/photos/V_7V8JJLGOsSoowvH7sgh.png",
   "socials": [
-    { "label": "SoundCloud", "url": "https://soundcloud.com/carnadawavs" },
-    { "label": "Spotify", "url": "https://open.spotify.com/artist/6j9EhlvFmGJmO3PDt2M8bp" },
-    { "label": "TikTok", "url": "https://www.tiktok.com/@carnada.wa" }
+    {
+      "label": "SoundCloud",
+      "url": "https://soundcloud.com/carnadawavs"
+    },
+    {
+      "label": "Spotify",
+      "url": "https://open.spotify.com/artist/6j9EhlvFmGJmO3PDt2M8bp"
+    },
+    {
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/@carnada.wa"
+    }
   ],
   "spotifyArtist": "6j9EhlvFmGJmO3PDt2M8bp",
   "releases": [
@@ -14,8 +22,14 @@
       "artist": "Carnada",
       "cover": "https://i.scdn.co/image/ab67616d0000b273becd93b7b98b14a703f5e9ac",
       "links": [
-        { "label": "Spotify", "url": "https://open.spotify.com/track/7gGLRdGxmzUlap6aJCstyZ" },
-        { "label": "Apple Music", "url": "https://music.apple.com/us/album/radical-shift/1848161513?i=1848161516" }
+        {
+          "label": "Spotify",
+          "url": "https://open.spotify.com/track/7gGLRdGxmzUlap6aJCstyZ"
+        },
+        {
+          "label": "Apple Music",
+          "url": "https://music.apple.com/us/album/radical-shift/1848161513?i=1848161516"
+        }
       ]
     },
     {
@@ -23,7 +37,10 @@
       "artist": "RAVEOUT500, Carnada",
       "cover": "https://i.scdn.co/image/ab67616d0000b273f8c34a61d473b493d74e286f",
       "links": [
-        { "label": "Spotify", "url": "https://open.spotify.com/track/5VoR5x08bV0VsUjH9sxKMd" }
+        {
+          "label": "Spotify",
+          "url": "https://open.spotify.com/track/5VoR5x08bV0VsUjH9sxKMd"
+        }
       ]
     }
   ],
@@ -34,8 +51,28 @@
       "thumb": "https://i.ytimg.com/vi/P-FnSduDah4/maxresdefault.jpg"
     }
   ],
-  "booking": { "label": "Press for booking", "url": "https://app.youform.com/forms/tvobohaq" },
+  "booking": {
+    "label": "Booking",
+    "options": [
+      {
+        "label": "Spain",
+        "note": "Booking form",
+        "url": "https://app.youform.com/forms/tvobohaq"
+      },
+      {
+        "label": "World",
+        "note": "bookings@rextheagency.com",
+        "email": "bookings@rextheagency.com",
+        "subject": "Booking request — Carnada",
+        "body": "Hi,\n\nI'd like to request a booking for Carnada.\n\nEvent / festival:\nDate:\nCity / country:\nVenue & capacity:\nSet length:\nBudget / offer:\n\nThanks!"
+      }
+    ]
+  },
   "more": [
-    { "label": "Stems library", "note": "For mastering engineers", "url": "https://carnada-wav.github.io/stems/" }
+    {
+      "label": "Stems library",
+      "note": "For mastering engineers",
+      "url": "https://carnada-wav.github.io/stems/"
+    }
   ]
 }
