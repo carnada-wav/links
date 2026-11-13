@@ -61,12 +61,5 @@
         "body": "Hi,\n\nI'd like to request a booking for Carnada.\n\nEvent / festival:\nDate:\nCity / country:\nVenue & capacity:\nSet length:\nBudget / offer:\n\nThanks!"
       }
     ]
-  },
-  "more": [
-    {
-      "label": "Stems library",
-      "note": "For mastering engineers",
-      "url": "https://carnada-wav.github.io/stems/"
-    }
-  ]
+  }
 }
